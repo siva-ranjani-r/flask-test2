@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sivaranjani</title>
+    </head>
+    <body>
+        {{list1,list2,list3}}
+        <form method="POST">
+            <input type="text" name="subcribes_list" placeholder="Enter the subcribes_list"><br><br>
+            <input type="text" name="post" placeholder="Enter the post"><br><br>
+            <input type="text" name="products" placeholder="Enter the products"><br><br>
+            <input type="submit" value="submit"><br><br>
+            </form>
+            <table border="1">
+                <tr>
+                  <th>subcribes_list</th>
+                  <th>post</th>
+                  <th>products</th>
+                </tr>
+              {% for i in range(list1|length) %}
+                <tr>
+                  <td>{{list1[i]}}</td>
+                  <td>{{list2[i]}}</td>
+                  <td>{{list3[i]}}</td>
+                </tr>
+                {%endfor%}
+              </table>
+    </body>
+</html>

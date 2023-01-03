@@ -1,0 +1,38 @@
+from flask import Flask,request,render_template
+
+
+app=Flask("__name__")
+
+
+@app.route("/home")
+def home():
+    return "I'm SIVARANJANI"
+
+
+subcribes_list=[]
+post=[]
+products=[]
+@app.route("/user",methods=["POST","GET"])
+def data():
+    if request.form.get("post")!=None:
+        subcribes_list.append(request.form.get("subcribes_list"))
+        post.append(request.form.get("post"))
+        products.append(request.form.get("products"))
+        print(subcribes_list)
+        print(post)
+        print(products)
+    return render_template("index.html",list1=subcribes_list,list2=post,list3=products)
+
+
+@app.route("/<api_id>", methods=['POST','GET'])
+def update_list(api_id):
+    id=request.json.get("id")
+    title=request.json.get("title")
+    content=request.json.get("content")
+    author=request.json.get("author")
+    temp={"title":title,"content":content,"author":author} 
+    return render_template("index.html",data=temp)
+
+
+if __name__ =="__main__":
+    app.run(debug=True)
